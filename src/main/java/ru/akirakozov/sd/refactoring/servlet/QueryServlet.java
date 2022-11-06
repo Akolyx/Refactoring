@@ -1,7 +1,9 @@
 package ru.akirakozov.sd.refactoring.servlet;
 
 import ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils;
+import ru.akirakozov.sd.refactoring.servlet.utils.HTMLUtils;
 
+import static ru.akirakozov.sd.refactoring.servlet.utils.HTMLUtils.HTMLOK;
 import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.executeQuery;
 
 import javax.servlet.http.HttpServlet;
@@ -18,23 +20,18 @@ public class QueryServlet extends HttpServlet {
         String command = request.getParameter("command");
 
         if ("max".equals(command)) {
-            executeQuery(SQLUtils.SQL_MAX_QUERY, response,
-                    "<h1>Product with max price: </h1>", "items");
+            executeQuery(SQLUtils.SQL_MAX_QUERY, response, HTMLUtils.HTML_MAX_BODY, "items");
         } else if ("min".equals(command)) {
-            executeQuery(SQLUtils.SQL_MIN_QUERY, response,
-                    "<h1>Product with min price: </h1>", "items");
+            executeQuery(SQLUtils.SQL_MIN_QUERY, response, HTMLUtils.HTML_MIN_BODY, "items");
         } else if ("sum".equals(command)) {
-            executeQuery(SQLUtils.SQL_SUM_QUERY, response,
-                    "Summary price: ", "function");
+            executeQuery(SQLUtils.SQL_SUM_QUERY, response, HTMLUtils.HTML_SUM_BODY, "function");
         } else if ("count".equals(command)) {
-            executeQuery(SQLUtils.SQL_CNT_QUERY, response,
-                    "Number of products: ", "function");
+            executeQuery(SQLUtils.SQL_CNT_QUERY, response, HTMLUtils.HTML_CNT_BODY, "function");
         } else {
             response.getWriter().println("Unknown command: " + command);
         }
 
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
+        HTMLOK(response);
     }
 
 }

@@ -6,6 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class HTMLUtils {
+    public static final String HTML_MAX_BODY = "<h1>Product with max price: </h1>";
+    public static final String HTML_MIN_BODY = "<h1>Product with min price: </h1>";
+    public static final String HTML_SUM_BODY = "Summary price: ";
+    public static final String HTML_CNT_BODY = "Number of products: ";
+
     public static void printHTML(ResultSet rs, HttpServletResponse response, String responseBody, String mode)
             throws IOException, SQLException {
         response.getWriter().println("<html><body>");
@@ -23,6 +28,11 @@ public class HTMLUtils {
         }
 
         response.getWriter().println("</body></html>");
+    }
+
+    public static void HTMLOK(HttpServletResponse response) {
+        response.setContentType("text/html");
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     private static void functionResult(ResultSet rs, HttpServletResponse response) throws IOException, SQLException {

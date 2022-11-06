@@ -1,5 +1,6 @@
 package ru.akirakozov.sd.refactoring.servlet;
 
+import static ru.akirakozov.sd.refactoring.servlet.utils.HTMLUtils.HTMLOK;
 import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.executeUpdate;
 
 import javax.servlet.http.HttpServlet;
@@ -19,8 +20,8 @@ public class AddProductServlet extends HttpServlet {
 
         executeUpdate(name, price);
 
-        response.setContentType("text/html");
-        response.setStatus(HttpServletResponse.SC_OK);
+        HTMLOK(response);
+
         response.getWriter().println("OK");
     }
 }
