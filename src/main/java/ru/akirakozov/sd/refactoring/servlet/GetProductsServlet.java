@@ -1,6 +1,7 @@
 package ru.akirakozov.sd.refactoring.servlet;
 
-import static ru.akirakozov.sd.refactoring.servlet.Utils.performQuery;
+import static ru.akirakozov.sd.refactoring.servlet.SQLUtils.performQuery;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
