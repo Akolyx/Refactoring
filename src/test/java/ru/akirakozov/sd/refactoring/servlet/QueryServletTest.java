@@ -30,8 +30,6 @@ public class QueryServletTest extends BaseServletTest {
     
     private static final ArrayList<Long> TEST_PRICES = new ArrayList<>(Arrays.asList(
             30L, 42L, 52L, 130L, 845L, 1L));
-
-    private static final int OK_RESPONSE_CODE = 200;
     
     @Before
     public void clearance() {

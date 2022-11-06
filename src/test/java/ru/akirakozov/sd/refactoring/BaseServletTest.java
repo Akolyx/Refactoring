@@ -8,6 +8,8 @@ import java.util.concurrent.Executors;
 
 public class BaseServletTest {
     public static final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    public static final int OK_RESPONSE_CODE = 200;
+    public static final int ERROR_RESPONSE_CODE = 500;
 
     @BeforeClass
     public static void beforeAll() throws InterruptedException {
