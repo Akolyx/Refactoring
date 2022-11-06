@@ -1,6 +1,8 @@
 package ru.akirakozov.sd.refactoring.servlet;
 
-import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.performQuery;
+import ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils;
+
+import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.executeQuery;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +16,7 @@ public class GetProductsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        performQuery("SELECT * FROM PRODUCT", response, "", "items");
+        executeQuery(SQLUtils.SQL_SLT_QUERY, response, "", "items");
 
         response.setContentType("text/html");
         response.setStatus(HttpServletResponse.SC_OK);

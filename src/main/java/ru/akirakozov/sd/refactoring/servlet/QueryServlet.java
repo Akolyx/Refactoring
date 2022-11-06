@@ -1,6 +1,8 @@
 package ru.akirakozov.sd.refactoring.servlet;
 
-import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.performQuery;
+import ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils;
+
+import static ru.akirakozov.sd.refactoring.servlet.utils.SQLUtils.executeQuery;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,16 +18,16 @@ public class QueryServlet extends HttpServlet {
         String command = request.getParameter("command");
 
         if ("max".equals(command)) {
-            performQuery("SELECT * FROM PRODUCT ORDER BY PRICE DESC LIMIT 1", response,
+            executeQuery(SQLUtils.SQL_MAX_QUERY, response,
                     "<h1>Product with max price: </h1>", "items");
         } else if ("min".equals(command)) {
-            performQuery("SELECT * FROM PRODUCT ORDER BY PRICE LIMIT 1", response,
+            executeQuery(SQLUtils.SQL_MIN_QUERY, response,
                     "<h1>Product with min price: </h1>", "items");
         } else if ("sum".equals(command)) {
-            performQuery("SELECT SUM(price) FROM PRODUCT", response,
+            executeQuery(SQLUtils.SQL_SUM_QUERY, response,
                     "Summary price: ", "function");
         } else if ("count".equals(command)) {
-            performQuery("SELECT COUNT(*) FROM PRODUCT", response,
+            executeQuery(SQLUtils.SQL_CNT_QUERY, response,
                     "Number of products: ", "function");
         } else {
             response.getWriter().println("Unknown command: " + command);
