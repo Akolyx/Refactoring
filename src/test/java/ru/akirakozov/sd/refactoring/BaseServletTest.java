@@ -1,4 +1,4 @@
-import ru.akirakozov.sd.refactoring.Main;
+package ru.akirakozov.sd.refactoring;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

@@ -1,3 +1,5 @@
+package ru.akirakozov.sd.refactoring;
+
 import org.apache.http.client.utils.URIBuilder;
 
 import java.net.URI;
