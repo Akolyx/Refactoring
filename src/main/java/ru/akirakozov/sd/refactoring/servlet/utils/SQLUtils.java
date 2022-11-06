@@ -1,12 +1,12 @@
-package ru.akirakozov.sd.refactoring.servlet;
+package ru.akirakozov.sd.refactoring.servlet.utils;
 
-import static ru.akirakozov.sd.refactoring.servlet.HTMLUtils.printHTML;
+import static ru.akirakozov.sd.refactoring.servlet.utils.HTMLUtils.printHTML;
 
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 
 public class SQLUtils {
-    static void performQuery(String sql, HttpServletResponse response, String responseBody, String mode) {
+    public static void performQuery(String sql, HttpServletResponse response, String responseBody, String mode) {
         try {
             try (Connection c = DriverManager.getConnection("jdbc:sqlite:test.db")) {
                 Statement stmt = c.createStatement();
